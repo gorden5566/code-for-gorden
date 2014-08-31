@@ -11,7 +11,7 @@
  *       Compiler:  gcc
  *
  *         Author:  gorden (), 695459065@qq.com
- *   Organization:  
+ *   Organization:  TaoMee, Inc. ShangHai CN. All rights reserved.
  *
  * =====================================================================================
  */
@@ -25,18 +25,12 @@ int main()
 {
     int arr[] = {2, 5, 4, 7, 3, 1, 8, 9};
     int n = sizeof(arr) / sizeof(arr[0]);
-
-    for (int i = 0; i < n; ++i) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    print_arr(arr, n);
 
     quick_sort(arr, n, 0, n - 1);
+    print_arr(arr, n);
 
-    for (int i = 0; i < n; ++i) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
+    int ages[] = {};
 
     return 0;
 }
