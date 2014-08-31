@@ -11,7 +11,7 @@
  *       Compiler:  gcc
  *
  *         Author:  gorden (), 695459065@qq.com
- *   Organization:  
+ *   Organization:  TaoMee, Inc. ShangHai CN. All rights reserved.
  *
  * =====================================================================================
  */
@@ -27,7 +27,23 @@ void swap(int &data1, int &data2)
 
 int random_in_range(int start, int end)
 {
-    return (end + start) / 2;
+    if (start > end) {
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+    int r = rand() % (end - start + 1);
+    return start + r;
+}
+
+void print_arr(int arr[], int length)
+{
+    if (arr == NULL || length <= 0)
+        return;
+    for (int i = 0; i < length; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
 }
 
 int partition(int data[], int length, int start, int end)
@@ -62,4 +78,31 @@ void quick_sort(int data[], int length, int start, int end)
         quick_sort(data, length, start, index - 1);
     if (index < end)
         quick_sort(data, length, index + 1, end);
+}
+
+void sort_ages(int ages[], int length)
+{
+    if (ages == NULL || length <= 0)
+        return;
+
+    const int oldest_age = 99;
+    int times_of_age[oldest_age + 1];
+    for (int i = 0; i <= oldest_age; ++i)
+        times_of_age[i] = 0;
+
+    for (int i = 0; i < length; ++i) {
+        int age = ages[i];
+        if (age < 0 || age > oldest_age)
+            return;
+
+        ++times_of_age[age];
+    }
+
+    int index = 0;
+    for (int i = 0; i <= oldest_age; ++i) {
+        for (int j = 0; j < times_of_age[i]; ++j) {
+            ages[index] = i;
+            ++index;
+        }
+    }
 }
