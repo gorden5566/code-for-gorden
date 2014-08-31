@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -O -g$/;"	m
+LIST_H	list.h	20;"	d
+ListNode	list.h	/^typedef struct ListNode{$/;"	s
+ListNode	list.h	/^} ListNode;$/;"	t	typeref:struct:ListNode
+OBJS	Makefile	/^OBJS = $(patsubst %.c, %.o, $(patsubst %.cpp, %.o, $(SOURCES)))$/;"	m
+SOURCES	Makefile	/^SOURCES = $(wildcard *.c *.cpp)$/;"	m
+TARGET	Makefile	/^TARGET = .\/main$/;"	m
+XX	Makefile	/^XX = g++$/;"	m
+add_to_tail	list.cpp	/^void add_to_tail(ListNode** pHead, int value)$/;"	f
+m_nValue	list.h	/^    int m_nValue;$/;"	m	struct:ListNode
+m_pNext	list.h	/^    struct ListNode* m_pNext;$/;"	m	struct:ListNode	typeref:struct:ListNode::ListNode
+main	main.cpp	/^int main()$/;"	f
+print_list	list.cpp	/^void print_list(ListNode** pHead)$/;"	f
+print_list_reverse_iter	list.cpp	/^void print_list_reverse_iter(ListNode *pHead)$/;"	f
+print_list_reverse_recur	list.cpp	/^void print_list_reverse_recur(ListNode *pHead)$/;"	f
+remove_node	list.cpp	/^void remove_node(ListNode** pHead, int value)$/;"	f
