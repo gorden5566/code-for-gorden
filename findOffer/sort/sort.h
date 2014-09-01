@@ -11,7 +11,7 @@
  *       Compiler:  gcc
  *
  *         Author:  gorden (), 695459065@qq.com
- *   Organization:  TaoMee, Inc. ShangHai CN. All rights reserved.
+ *   Organization:  
  *
  * =====================================================================================
  */
