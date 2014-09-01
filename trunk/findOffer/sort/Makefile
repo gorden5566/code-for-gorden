@@ -21,7 +21,6 @@ OBJS = $(patsubst %.c, %.o, $(patsubst %.cpp, %.o, $(SOURCES)))
 
 $(TARGET) : $(OBJS)
 	$(XX) $(OBJS) -o $(TARGET)
-	chmod a+x $(TARGET)
 
 clean:
 	rm -rf *.o $(TARGET)
