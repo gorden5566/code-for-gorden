@@ -29,9 +29,14 @@ typedef struct ListNode{
 
 
 void add_to_tail(ListNode** pHead, int value);
-void print_list(ListNode** pHead);
+void print_list(ListNode* pHead);
 void remove_node(ListNode** pHead, int value);
 void print_list_reverse_iter(ListNode *pHead);
 void print_list_reverse_recur(ListNode *pHead);
+ListNode* find_kth_to_tail(ListNode *pHead, unsigned int k);
+ListNode* reverse_list(ListNode *pHead);
+ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2);
+ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2);
+void delete_node(ListNode **pListHead, ListNode *pToBeDeleted);
 
 #endif

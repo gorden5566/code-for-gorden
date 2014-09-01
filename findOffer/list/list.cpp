@@ -36,12 +36,12 @@ void add_to_tail(ListNode** pHead, int value)
     }
 }
 
-void print_list(ListNode** pHead)
+void print_list(ListNode* pHead)
 {
-    if (*pHead == NULL) {
+    if (pHead == NULL) {
         std::cout << "list has no node." << std::endl;
     } else {
-        ListNode *pNode = *pHead;
+        ListNode *pNode = pHead;
         while (pNode->m_pNext != NULL) {
             std::cout << pNode->m_nValue << "->";
             pNode = pNode->m_pNext;
@@ -106,3 +106,142 @@ void print_list_reverse_recur(ListNode *pHead)
         std::cout << pHead->m_nValue << " ";
     }
 }
+
+ListNode* find_kth_to_tail(ListNode *pHead, unsigned int k)
+{
+    if (pHead == NULL || k <= 0)
+        return NULL;
+
+    ListNode *pAhead = pHead;
+    ListNode *pBehind = NULL;
+
+    for (unsigned int i = 0; i < k - 1; ++i) {
+        if (pAhead->m_pNext != NULL) {
+            pAhead = pAhead->m_pNext;
+        } else {
+            return NULL;
+        }
+    }
+
+    pBehind = pHead;
+    while (pAhead->m_pNext != NULL) {
+        pAhead = pAhead->m_pNext;
+        pBehind = pBehind->m_pNext;
+    }
+
+    return pBehind;
+}
+
+ListNode* reverse_list(ListNode *pHead)
+{
+    ListNode *pReversedHead = NULL;
+    ListNode *pNode = pHead;
+    ListNode *pPrev = NULL;
+
+    while (pNode != NULL) {
+        ListNode *pNext = pNode->m_pNext; //save point to next node
+
+        if (pNext == NULL) //find reversed head
+            pReversedHead = pNode;
+
+        pNode->m_pNext = pPrev; //reverse link
+
+        pPrev = pNode;
+        pNode = pNext;
+    }
+
+    return pReversedHead;
+}
+
+ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2)
+{
+    if (pHead1 == NULL) {
+        return pHead2;
+    } else if (pHead2 == NULL) {
+        return pHead1;
+    }
+
+    ListNode *pMergedHead = NULL;
+
+    if (pHead1->m_nValue < pHead2->m_nValue) {
+        pMergedHead = pHead1;
+        pMergedHead->m_pNext = merge_recur(pHead1->m_pNext, pHead2);
+    } else {
+        pMergedHead = pHead2;
+        pMergedHead->m_pNext = merge_recur(pHead1, pHead2->m_pNext);
+    }
+
+    return pMergedHead;
+}
+
+ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2)
+{
+    if (pHead1 == NULL) {
+        return pHead2;
+    } else if (pHead2 == NULL) {
+        return pHead1;
+    }
+
+    ListNode *pMergedHead = NULL;
+    ListNode *p1 = pHead1;
+    ListNode *p2 = pHead2;
+
+    if (p1->m_nValue < p2->m_nValue) {
+        pMergedHead = p1;
+        p1 = p1->m_pNext;
+    } else {
+        pMergedHead = p2;
+        p2 = p2->m_pNext;
+    }
+    ListNode *pMergedTail = pMergedHead;
+
+    while (p1 != NULL && p2 != NULL) {
+        if (p1->m_nValue < p2->m_nValue) {
+            pMergedTail->m_pNext = p1;
+            p1 = p1->m_pNext;
+        } else {
+            pMergedTail->m_pNext = p2;
+            p2 = p2->m_pNext;
+        }
+        pMergedTail = pMergedTail->m_pNext;
+    }
+
+    if (p1 != NULL) {
+        pMergedTail->m_pNext = p1;
+    } else if (p2 != NULL) {
+        pMergedTail->m_pNext = p2;
+    } else {
+        pMergedTail->m_pNext = NULL;
+    }
+
+    return pMergedHead;
+}
+
+void delete_node(ListNode **pListHead, ListNode *pToBeDeleted)
+{
+    if (!pListHead || !pToBeDeleted)
+        return;
+
+    if (pToBeDeleted->m_pNext != NULL) {
+        ListNode *pNext = pToBeDeleted->m_pNext;
+        pToBeDeleted->m_nValue = pNext->m_nValue;
+        pToBeDeleted->m_pNext = pNext->m_pNext;
+
+        delete pNext;
+        pNext = NULL;
+    } else if (*pListHead == pToBeDeleted) {
+        delete pToBeDeleted;
+        pToBeDeleted = NULL;
+        *pListHead = NULL;
+    } else {
+        ListNode *pNode = *pListHead;
+        while (pNode->m_pNext != pToBeDeleted) {
+            pNode = pNode->m_pNext;
+        }
+        pNode->m_pNext = NULL;
+        delete pToBeDeleted;
+        pToBeDeleted = NULL;
+    }
+}
+
+
