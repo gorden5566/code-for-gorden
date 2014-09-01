@@ -20,7 +20,10 @@
 #define FINDNUM_H
 
 #include <stdio.h>
+#include <stdlib.h>
 
 int find_num(int *matrix, int rows, int columns, int number);
+int min_in_revolve(int *numbers, int length);
+int min_in_order(int *numbers, int index1, int index2);
 
 #endif
