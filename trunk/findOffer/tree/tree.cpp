@@ -98,3 +98,145 @@ void travel_tree_dfs(BinaryTreeNode *root)
         travel_tree_dfs(root->m_pRight);
     }
 }
+
+void travel_tree_back(BinaryTreeNode *root)
+{
+    if (root == NULL)
+        return;
+    if (root->m_pLeft != NULL) {
+        travel_tree_back(root->m_pLeft);
+    }
+    if (root->m_pRight != NULL) {
+        travel_tree_back(root->m_pRight);
+    }
+    std::cout << root->m_nValue << " ";
+}
+
+bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
+{
+    bool result = false;
+
+    if (pRoot1 != NULL && pRoot2 != NULL) {
+        if (pRoot1->m_nValue == pRoot2->m_nValue) {
+            result = does_tree1_has_tree2(pRoot1, pRoot2);
+        }
+
+        if (!result) {
+            result = has_subtree(pRoot1->m_pLeft, pRoot2);
+        }
+
+        if (!result) {
+            result = has_subtree(pRoot1->m_pRight, pRoot2);
+        }
+    }
+
+    return result;
+}
+
+bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
+{
+    if (pRoot2 == NULL) { //must be here
+        return true;
+    }
+    
+    if (pRoot1 == NULL) {
+        return false;
+    }
+
+    if (pRoot1->m_nValue != pRoot2->m_nValue) {
+        return false;
+    }
+
+    return does_tree1_has_tree2(pRoot1->m_pLeft, pRoot2->m_pLeft)
+        && does_tree1_has_tree2(pRoot1->m_pRight, pRoot2->m_pRight);
+}
+
+void mirror_recurse(BinaryTreeNode *pRoot)
+{
+    if (pRoot == NULL) {
+        return;
+    }
+
+    if (pRoot->m_pLeft == NULL && pRoot->m_pRight == NULL) { //and
+        return;
+    }
+
+    //swap left and right point
+    BinaryTreeNode *pTmp = pRoot->m_pLeft;
+    pRoot->m_pLeft = pRoot->m_pRight;
+    pRoot->m_pRight = pTmp;
+
+    if (pRoot->m_pLeft) {
+        mirror_recurse(pRoot->m_pLeft);
+    }
+
+    if (pRoot->m_pRight) {
+        mirror_recurse(pRoot->m_pRight);
+    }
+}
+
+bool is_seq_of_bst(int seq[], int length)
+{
+    if (seq == NULL || length <= 0)
+        return false;
+
+    int root = seq[length - 1];
+
+    int i = 0;
+    for ( ; i < length -1; ++i) {
+        if (seq[i] > root)
+            break;
+    }
+
+    int j = i;
+    for ( ; j < length - 1; ++j) {
+        if (seq[j] < root)
+            return false;
+    }
+
+    bool left = true;
+    if (i > 0) {
+        left = is_seq_of_bst(seq, i);
+    }
+
+    bool right = true;
+    if (i < length - 1) {
+        right = is_seq_of_bst(seq + i, length - i - 1);
+    }
+
+    return (left && right);
+}
+
+void find_path(BinaryTreeNode *pRoot, int expectedSum)
+{
+    if (pRoot == NULL)
+        return;
+    std::vector<int> path;
+    int currentSum = 0;
+    do_find_path(pRoot, expectedSum, path, currentSum);
+}
+
+void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum)
+{
+    currentSum += pRoot->m_nValue;
+    path.push_back(pRoot->m_nValue);
+
+    bool isLeaf = pRoot->m_pLeft == NULL && pRoot->m_pRight == NULL;
+    if (currentSum == expectedSum && isLeaf) {
+        std::cout << "A path is found: " << std::endl;
+        std::vector<int>::iterator iter = path.begin();
+        for ( ; iter != path.end(); ++iter) {
+            std::cout << *iter << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    if (pRoot->m_pLeft != NULL) {
+        do_find_path(pRoot->m_pLeft, expectedSum, path, currentSum);
+    }
+    if (pRoot->m_pRight != NULL) {
+        do_find_path(pRoot->m_pRight, expectedSum, path, currentSum);
+    }
+
+    path.pop_back();
+}
