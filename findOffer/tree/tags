@@ -3,7 +3,7 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.7	//
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 BinaryTreeNode	tree.h	/^typedef struct BinaryTreeNode {$/;"	s
 BinaryTreeNode	tree.h	/^} BinaryTreeNode;$/;"	t	typeref:struct:BinaryTreeNode
 CC	Makefile	/^CC = gcc$/;"	m
@@ -15,8 +15,16 @@ TREE_H	tree.h	20;"	d
 XX	Makefile	/^XX = g++$/;"	m
 construct	tree.cpp	/^BinaryTreeNode* construct(int *preorder, int *inorder, int length)$/;"	f
 do_construct	tree.cpp	/^BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *in_end)$/;"	f
+does_tree1_has_tree2	tree.cpp	/^bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)$/;"	f
+get_tree1	main.cpp	/^BinaryTreeNode *get_tree1()$/;"	f
+get_tree2	main.cpp	/^BinaryTreeNode *get_tree2()$/;"	f
+has_subtree	tree.cpp	/^bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)$/;"	f
+is_seq_of_bst	tree.cpp	/^bool is_seq_of_bst(int seq[], int length)$/;"	f
 m_nValue	tree.h	/^    int                     m_nValue;$/;"	m	struct:BinaryTreeNode
 m_pLeft	tree.h	/^    struct BinaryTreeNode   *m_pLeft;$/;"	m	struct:BinaryTreeNode	typeref:struct:BinaryTreeNode::BinaryTreeNode
 m_pRight	tree.h	/^    struct BinaryTreeNode   *m_pRight;$/;"	m	struct:BinaryTreeNode	typeref:struct:BinaryTreeNode::BinaryTreeNode
 main	main.cpp	/^int main()$/;"	f
-print_tree	tree.cpp	/^void print_tree(BinaryTreeNode *root)$/;"	f
+mirror_recurse	tree.cpp	/^void mirror_recurse(BinaryTreeNode *pRoot)$/;"	f
+travel_tree_back	tree.cpp	/^void travel_tree_back(BinaryTreeNode *root)$/;"	f
+travel_tree_bfs	tree.cpp	/^void travel_tree_bfs(BinaryTreeNode *root)$/;"	f
+travel_tree_dfs	tree.cpp	/^void travel_tree_dfs(BinaryTreeNode *root)$/;"	f
