@@ -246,6 +246,7 @@ BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree)
 	BinaryTreeNode *pLastNodeInList = NULL;
 	convert_node(pRootOfTree, &pLastNodeInList);
 
+	//find head
 	BinaryTreeNode *pHeadOfList = pLastNodeInList;
 	while (pHeadOfList != NULL && pHeadOfList->m_pLeft != NULL) {
 		pHeadOfList = pHeadOfList->m_pLeft;
@@ -267,7 +268,7 @@ void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)
 		convert_node(pCurrent->m_pLeft, pLastNodeInList);
 	}
 
-	//link left to current
+	//link left with current
 	pCurrent->m_pLeft = *pLastNodeInList;
 	if (*pLastNodeInList != NULL) {
 		(*pLastNodeInList)->m_pRight = pCurrent;
