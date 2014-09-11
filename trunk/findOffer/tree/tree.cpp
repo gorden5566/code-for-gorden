@@ -240,3 +240,43 @@ void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path
 
     path.pop_back();
 }
+
+BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree)
+{
+	BinaryTreeNode *pLastNodeInList = NULL;
+	convert_node(pRootOfTree, &pLastNodeInList);
+
+	BinaryTreeNode *pHeadOfList = pLastNodeInList;
+	while (pHeadOfList != NULL && pHeadOfList->m_pLeft != NULL) {
+		pHeadOfList = pHeadOfList->m_pLeft;
+	}
+
+	return pHeadOfList;
+}
+
+void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)
+{
+	if (pNode == NULL) {
+		return;
+	}
+
+	BinaryTreeNode *pCurrent = pNode;
+
+	//convert left
+	if (pCurrent->m_pLeft != NULL) {
+		convert_node(pCurrent->m_pLeft, pLastNodeInList);
+	}
+
+	//link left to current
+	pCurrent->m_pLeft = *pLastNodeInList;
+	if (*pLastNodeInList != NULL) {
+		(*pLastNodeInList)->m_pRight = pCurrent;
+	}
+
+	*pLastNodeInList = pCurrent;
+
+	//convert right
+	if (pCurrent->m_pRight != NULL) {
+		convert_node(pCurrent->m_pRight, pLastNodeInList);
+	}
+}

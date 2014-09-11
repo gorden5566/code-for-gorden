@@ -22,6 +22,7 @@ using namespace std;
 void find_path_sum();
 BinaryTreeNode *get_tree1();
 BinaryTreeNode *get_tree2();
+void convert_tree_to_list();
 
 int main()
 {
@@ -70,6 +71,8 @@ int main()
 
     find_path_sum();
 
+	convert_tree_to_list();
+
     return 0;
 }
 
@@ -107,4 +110,20 @@ BinaryTreeNode *get_tree2()
     travel_tree_bfs(pRoot);
 
     return pRoot;
+}
+
+void convert_tree_to_list()
+{
+    int arr_pre[] = {10, 6, 4, 8, 14, 12, 16};
+    int arr_in[] = {4, 6, 8, 10, 12, 14, 16};
+    BinaryTreeNode *pRoot = construct(arr_pre, arr_in, sizeof(arr_in)/sizeof(int));
+	travel_tree_bfs(pRoot);
+	
+	BinaryTreeNode *pHead = convert(pRoot);
+	while (pHead != NULL) {
+		cout << pHead->m_nValue << " ";
+		pHead = pHead->m_pRight;
+	}
+	cout << endl;
+
 }
