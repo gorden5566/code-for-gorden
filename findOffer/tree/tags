@@ -14,8 +14,14 @@ TARGET	Makefile	/^TARGET = .\/main$/;"	m
 TREE_H	tree.h	20;"	d
 XX	Makefile	/^XX = g++$/;"	m
 construct	tree.cpp	/^BinaryTreeNode* construct(int *preorder, int *inorder, int length)$/;"	f
+convert	tree.cpp	/^BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree)$/;"	f
+convert_node	tree.cpp	/^void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)$/;"	f
+convert_tree_to_list	main.cpp	/^void convert_tree_to_list()$/;"	f
 do_construct	tree.cpp	/^BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *in_end)$/;"	f
+do_find_path	tree.cpp	/^void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum)$/;"	f
 does_tree1_has_tree2	tree.cpp	/^bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)$/;"	f
+find_path	tree.cpp	/^void find_path(BinaryTreeNode *pRoot, int expectedSum)$/;"	f
+find_path_sum	main.cpp	/^void find_path_sum()$/;"	f
 get_tree1	main.cpp	/^BinaryTreeNode *get_tree1()$/;"	f
 get_tree2	main.cpp	/^BinaryTreeNode *get_tree2()$/;"	f
 has_subtree	tree.cpp	/^bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)$/;"	f

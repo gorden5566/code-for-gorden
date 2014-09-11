@@ -41,5 +41,7 @@ void mirror_recurse(BinaryTreeNode *pRoot);
 bool is_seq_of_bst(int seq[], int length);
 void find_path(BinaryTreeNode *pRoot, int expectedSum);
 void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum);
+BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree);
+void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList);
 
 #endif
