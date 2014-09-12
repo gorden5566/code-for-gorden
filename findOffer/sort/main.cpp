@@ -21,6 +21,8 @@
 
 using namespace std;
 
+void inverse_count();
+
 int main()
 {
     int arr[] = {2, 5, 4, 7, 3, 1, 8, 9};
@@ -30,7 +32,17 @@ int main()
     quick_sort(arr, n, 0, n - 1);
     print_arr(arr, n);
 
-    int ages[] = {};
+    //int ages[] = {};
+	
+	inverse_count();
 
     return 0;
+}
+
+void inverse_count()
+{
+    int arr[] = {7, 5, 6, 4};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+	cout << inverse_pairs(arr, n) << endl;
 }
