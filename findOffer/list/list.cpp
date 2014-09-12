@@ -244,4 +244,46 @@ void delete_node(ListNode **pListHead, ListNode *pToBeDeleted)
     }
 }
 
+unsigned int get_list_length(ListNode *pHead)
+{
+	unsigned int nLength = 0;
+	ListNode *pNode = pHead;
+	while (pNode != NULL) {
+		++nLength;
+		pNode = pNode->m_pNext;
+	}
 
+	return nLength;
+}
+
+ListNode* find_first_common_node(ListNode *pHead1, ListNode *pHead2)
+{
+	unsigned int nLength1 = get_list_length(pHead1);
+	unsigned int nLength2 = get_list_length(pHead2);
+	int nLengthDif = nLength1 - nLength2;
+
+	ListNode *pListHeadLong = pHead1;
+	ListNode *pListHeadShort = pHead2;
+
+	if (nLength2 > nLength1) {
+		pListHeadLong = pHead2;
+		pListHeadShort = pHead1;
+		nLengthDif = nLength2 - nLength1;
+	}
+
+	//the long list moves (nLong - nShort) steps
+	for (int i = 0; i < nLengthDif; ++i) {
+		pListHeadLong = pListHeadLong->m_pNext;
+	}
+
+	while ((pListHeadLong != NULL) && (pListHeadShort != NULL)
+		&& (pListHeadLong != pListHeadShort)) {
+		pListHeadLong = pListHeadLong->m_pNext;
+		pListHeadShort = pListHeadShort->m_pNext;
+	}
+
+	//found the first common node
+	ListNode *pFirstCommonNode = pListHeadLong;
+
+	return pFirstCommonNode;
+}

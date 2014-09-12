@@ -38,5 +38,7 @@ ListNode* reverse_list(ListNode *pHead);
 ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2);
 ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2);
 void delete_node(ListNode **pListHead, ListNode *pToBeDeleted);
+unsigned int get_list_length(ListNode *pHead);
+ListNode* find_first_common_node(ListNode *pHead1, ListNode *pHead2);
 
 #endif
