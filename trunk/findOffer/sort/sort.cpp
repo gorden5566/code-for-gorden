@@ -162,3 +162,67 @@ int inverse_pairs(int *data, int length)
 
 	return count;
 }
+
+int get_first_k(int *data, int length, int k, int start, int end)
+{
+	if (start > end) {
+		return -1;
+	}
+
+	int middleIndex = (start + end) / 2;
+	int middleData = data[middleIndex];
+
+	if (middleData == k) {
+		if ((middleIndex > 0 && data[middleIndex - 1] != k) || middleIndex == 0) { //found the first k
+			return middleIndex;
+		} else { //not the first k
+			end = middleIndex - 1;
+		}
+	} else if (middleData > k) {
+		end = middleIndex - 1;
+	} else {
+		start = middleIndex + 1;
+	}
+
+	return get_first_k(data, length, k, start, end);
+}
+
+int get_last_k(int *data, int length, int k, int start, int end)
+{
+	if (start > end) {
+		return -1;
+	}
+
+	int middleIndex = (start + end) / 2;
+	int middleData = data[middleIndex];
+
+	if (middleData == k) {
+		if ((middleIndex < length -1 && data[middleIndex + 1] != k) || middleIndex == length - 1) { //found the last k
+			return middleIndex;
+		} else { //not the first k
+			start = middleIndex + 1;
+		}
+	} else if (middleData < k) {
+		start = middleIndex + 1;
+	} else {
+		end = middleIndex - 1;
+	}
+
+	return get_last_k(data, length, k, start, end);
+}
+
+int get_number_of_k(int *data, int length, int k)
+{
+	int number = 0;
+
+	if (data != NULL && length > 0) {
+		int first = get_first_k(data, length, k, 0, length - 1);
+		int last = get_last_k(data, length, k, 0, length - 1);
+
+		if (first > -1 && last > -1) {
+			number = last - first + 1;
+		}
+	}
+
+	return number;
+}

@@ -22,6 +22,7 @@
 using namespace std;
 
 void inverse_count();
+void number_of_k();
 
 int main()
 {
@@ -36,6 +37,8 @@ int main()
 	
 	inverse_count();
 
+	number_of_k();
+
     return 0;
 }
 
@@ -45,4 +48,12 @@ void inverse_count()
     int n = sizeof(arr) / sizeof(arr[0]);
 
 	cout << inverse_pairs(arr, n) << endl;
+}
+
+void number_of_k()
+{
+    int arr[] = {1, 2, 3, 3, 3, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+	
+	cout << get_number_of_k(arr, n, 3) << endl;
 }
