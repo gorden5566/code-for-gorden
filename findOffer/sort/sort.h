@@ -30,5 +30,8 @@ void sort_ages(int ages[], int length);
 void print_arr(int arr[], int length);
 int inverse_pairs_core(int *data, int *copy, int start, int end);
 int inverse_pairs(int *data, int length);
+int get_first_k(int *data, int length, int k, int start, int end);
+int get_last_k(int *data, int length, int k, int start, int end);
+int get_number_of_k(int *data, int length, int k);
 
 #endif
