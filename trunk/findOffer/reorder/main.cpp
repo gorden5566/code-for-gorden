@@ -19,7 +19,24 @@
 #include "reorder.h"
 #include <iostream>
 
+using namespace std;
+
+void odd_even();
+void sentence();
+void rotate_string();
+
 int main()
+{
+	odd_even();
+
+	sentence();
+
+	rotate_string();
+
+    return 0;
+}
+
+void odd_even()
 {
     int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     unsigned int n = sizeof(arr) / sizeof(arr[0]);
@@ -28,6 +45,16 @@ int main()
     //reorder_odd_even(arr, n);
     reorder_odd_even2(arr, n);
     print_arr(arr, n);
+}
 
-    return 0;
+void sentence()
+{
+	char str[] = "I am a student.";	
+	cout << reverse_sentence(str) << endl;
+}
+
+void rotate_string()
+{
+	char str[] = "abcdefg";
+	cout << left_rotate_string(str, 2) << endl;
 }
