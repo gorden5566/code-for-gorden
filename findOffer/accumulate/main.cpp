@@ -21,23 +21,15 @@
 
 using namespace std;
 
-unsigned int solution1(unsigned int n);
-
 int main()
 {
 	cout << solution1(5) << endl;
 
+	cout << solution2(5) << endl;
+
+	cout << sum_solution3(5) << endl;
+
 	return 0;
 }
 
-unsigned int solution1(unsigned int n)
-{
 
-	Temp::reset();
-
-	Temp *a = new Temp[n];
-	delete[] a;
-	a = NULL;
-
-	return Temp::getsum();
-}

@@ -19,6 +19,8 @@
 #ifndef ACCUMULATE_H
 #define ACCUMULATE_H
 
+#include <iostream>
+
 class Temp
 {
 public:
@@ -44,7 +46,30 @@ private:
 	static unsigned int sum;
 };
 
-unsigned int Temp::n = 0;
-unsigned int Temp::sum = 0;
+class A
+{
+public:
+	virtual unsigned int sum(unsigned int n)
+	{
+		return 0;
+	}
+};
+
+extern A *array[2];
+class B: public A
+{
+public:
+	virtual unsigned int sum(unsigned int n)
+	{
+		return array[!!n]->sum(n-1) + n;
+	}
+};
+
+unsigned int solution1(unsigned int n);
+unsigned int solution2(unsigned int n);
+
+typedef unsigned int (*fun)(unsigned int);
+unsigned int solution3_terminator(unsigned int);
+unsigned int sum_solution3(unsigned int n);
 
 #endif
