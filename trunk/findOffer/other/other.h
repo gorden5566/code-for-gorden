@@ -49,4 +49,7 @@ void find_nums_appear_once(int data[], int length, int *num1, int *num2);
 
 bool find_numbers_with_sum(int data[], int length, int sum, int *num1, int *num2);
 
+void print_continuous_sequence(int small, int big);
+void find_continuous_sequence(int sum);
+
 #endif

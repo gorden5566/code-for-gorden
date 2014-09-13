@@ -26,6 +26,7 @@ void ugly_number();
 void first_char();
 void nums_appear_once();
 void numbers_with_sum();
+void continuous_sequence();
 
 int main()
 {
@@ -42,6 +43,8 @@ int main()
 	nums_appear_once();
 
 	numbers_with_sum();
+
+	continuous_sequence();
 
 	return 0;
 }
@@ -114,4 +117,9 @@ void numbers_with_sum()
 	find_numbers_with_sum(arr, n, 15, &num1, &num2);
 
 	cout << "num1: " << num1 << ", num2: " << num2 << endl;
+}
+
+void continuous_sequence()
+{
+	find_continuous_sequence(15);
 }
