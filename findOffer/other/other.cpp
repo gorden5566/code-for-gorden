@@ -249,3 +249,40 @@ bool find_numbers_with_sum(int data[], int length, int sum, int *num1, int *num2
 
 	return found;
 }
+
+void print_continuous_sequence(int small, int big)
+{
+	for (int i = small; i <= big; ++i) {
+		cout << i << " ";
+	}
+	cout << endl;
+}
+
+void find_continuous_sequence(int sum)
+{
+	if (sum < 3)
+		return;
+	
+	int small = 1;
+	int big = 2;
+	int middle = (1 + sum) / 2;
+	int curSum = small + big;
+
+	while (small < middle) {
+		if (curSum == sum) {
+			print_continuous_sequence(small, big);
+		}
+
+		while (curSum > sum && small < middle) {
+			curSum -= small;
+			small++;
+
+			if (curSum == sum) {
+				print_continuous_sequence(small, big);
+			}
+		}
+
+		big++;
+		curSum += big;
+	}
+}
