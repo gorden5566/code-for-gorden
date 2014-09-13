@@ -25,6 +25,7 @@ void min_number();
 void ugly_number();
 void first_char();
 void nums_appear_once();
+void numbers_with_sum();
 
 int main()
 {
@@ -39,6 +40,8 @@ int main()
 	first_char();
 
 	nums_appear_once();
+
+	numbers_with_sum();
 
 	return 0;
 }
@@ -97,6 +100,18 @@ void nums_appear_once()
 	int num1 = 0;
 	int num2 = 0;
 	find_nums_appear_once(arr, n, &num1, &num2);
+
+	cout << "num1: " << num1 << ", num2: " << num2 << endl;
+}
+
+void numbers_with_sum()
+{
+	int arr[] = {1, 2, 4, 7, 11, 15};
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	int num1 = 0;
+	int num2 = 0;
+	find_numbers_with_sum(arr, n, 15, &num1, &num2);
 
 	cout << "num1: " << num1 << ", num2: " << num2 << endl;
 }
