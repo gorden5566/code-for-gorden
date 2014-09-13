@@ -91,3 +91,74 @@ void print_arr(int arr[], int length)
     }
     std::cout << std::endl;
 }
+
+void reverse(char *pbegin, char *pend)
+{
+	if (pbegin == NULL || pend == NULL) {
+		return;
+	}
+
+	while (pbegin < pend) {
+		char temp = *pbegin;
+		*pbegin = *pend;
+		*pend = temp;
+
+		pbegin++;
+		pend--;
+	}
+}
+
+char *reverse_sentence(char *pdata)
+{
+	if (pdata == NULL) {
+		return NULL;
+	}
+
+	//pbegin points to the first char
+	char *pbegin = pdata;
+
+	//pend points to the last char
+	char *pend = pdata;
+	while (*pend != '\0') {
+		pend++;
+	}
+	pend--;
+
+	reverse(pbegin, pend);
+
+	pbegin = pend = pdata;
+	while (*pbegin != '\0') {
+		if (*pbegin == ' ') {
+			pbegin++;
+			pend++;
+		} else if (*pend == ' ' || *pend == '\0') {
+			reverse(pbegin, --pend);
+			pbegin = ++pend;
+		} else {
+			pend++;
+		}
+	}
+
+	return pdata;
+}
+
+char* left_rotate_string(char *pstr, int n)
+{
+	if (pstr != NULL) {
+		int nLength = static_cast<int>(strlen(pstr));
+		if (nLength > 0 && n > 0 && n < nLength) {
+			char *pFirstStart = pstr;
+			char *pFirstEnd = pstr + n - 1;
+			char *pSecondStart = pstr + n;
+			char *pSecondEnd = pstr + nLength - 1;
+
+			reverse(pFirstStart, pFirstEnd);
+
+			reverse(pSecondStart, pSecondEnd);
+
+			reverse(pFirstStart, pSecondEnd);
+		}
+	}
+
+	return pstr;
+}
