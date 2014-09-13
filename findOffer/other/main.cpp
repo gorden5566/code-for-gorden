@@ -24,6 +24,7 @@ void greatest_sum();
 void min_number();
 void ugly_number();
 void first_char();
+void nums_appear_once();
 
 int main()
 {
@@ -36,6 +37,8 @@ int main()
 	ugly_number();
 
 	first_char();
+
+	nums_appear_once();
 
 	return 0;
 }
@@ -84,4 +87,16 @@ void first_char()
 {
 	char str[] = "abaccdeff";
 	cout << first_not_repeat_char(str) << endl;
+}
+
+void nums_appear_once()
+{
+	int arr[] = {2, 4, 3, 6, 3, 2, 5, 5};
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	int num1 = 0;
+	int num2 = 0;
+	find_nums_appear_once(arr, n, &num1, &num2);
+
+	cout << "num1: " << num1 << ", num2: " << num2 << endl;
 }
