@@ -51,8 +51,8 @@ unsigned int solution3_terminator(unsigned int)
 	return 0;
 }
 
-unsigned int sum_solution3(unsigned int n)
+unsigned int solution3(unsigned int n)
 {
-	static fun f[2] = {solution3_terminator, sum_solution3};
+	static fun f[2] = {solution3_terminator, solution3};
 	return n + f[!!n](n-1);
 }

@@ -70,6 +70,6 @@ unsigned int solution2(unsigned int n);
 
 typedef unsigned int (*fun)(unsigned int);
 unsigned int solution3_terminator(unsigned int);
-unsigned int sum_solution3(unsigned int n);
+unsigned int solution3(unsigned int n);
 
 #endif
