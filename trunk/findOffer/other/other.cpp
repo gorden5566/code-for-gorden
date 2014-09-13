@@ -180,3 +180,44 @@ char first_not_repeat_char(char *pString)
 
 	return '\0';
 }
+
+unsigned int find_first_bit_is_one(int num)
+{
+	unsigned int indexBit = 0;
+	while (((num & 1) == 0) && (indexBit < 8 * sizeof(int))) {
+		num = num >> 1;
+		++indexBit;
+	}
+
+	return indexBit;
+}
+
+bool is_bit_one(int num, unsigned int indexBit)
+{
+	num = num >> indexBit;
+	return (num & 1);
+}
+
+void find_nums_appear_once(int data[], int length, int *num1, int *num2)
+{
+	if (data == NULL || length < 2) {
+		return ;
+	}
+
+	int resultExclusiveOR = 0;
+	for (int i = 0; i < length; ++i) {
+		resultExclusiveOR ^= data[i];
+	}
+
+	//find the first bit is 1
+	unsigned int indexOf1 = find_first_bit_is_one(resultExclusiveOR);
+
+	*num1 = *num2 = 0;
+	for (int j = 0; j < length; ++j) {
+		if (is_bit_one(data[j], indexOf1)) {
+			*num1 ^= data[j];
+		} else {
+			*num2 ^= data[j];
+		}
+	}
+}

@@ -43,4 +43,8 @@ int get_ugly_number(int index);
 
 char first_not_repeat_char(char *pString);
 
+unsigned int find_first_bit_is_one(int num);
+bool is_bit_one(int num, unsigned int indexBit);
+void find_nums_appear_once(int data[], int length, int *num1, int *num2);
+
 #endif
