@@ -23,6 +23,7 @@ void find_path_sum();
 BinaryTreeNode *get_tree1();
 BinaryTreeNode *get_tree2();
 void convert_tree_to_list();
+void depth_and_balance();
 
 int main()
 {
@@ -72,6 +73,8 @@ int main()
     find_path_sum();
 
 	convert_tree_to_list();
+
+	depth_and_balance();
 
     return 0;
 }
@@ -126,4 +129,24 @@ void convert_tree_to_list()
 	}
 	cout << endl;
 
+}
+
+void depth_and_balance()
+{
+    int arr_pre[] = {1, 2, 4, 5, 7, 3, 6};
+    int arr_in[] = {4, 2, 7, 5, 1, 3, 6};
+    BinaryTreeNode *pRoot = construct(arr_pre, arr_in, sizeof(arr_in)/sizeof(int));
+	//travel_tree_bfs(pRoot);
+	cout << "tree depth: " << tree_depth(pRoot) << endl;
+	if (is_balanced1(pRoot)) {
+		cout << "is balanced1: true "<< endl;
+	} else {
+		cout << "is balanced1: false "<< endl;
+	}
+
+	if (is_balanced2(pRoot)) {
+		cout << "is balanced2: true "<< endl;
+	} else {
+		cout << "is balanced2: false "<< endl;
+	}
 }

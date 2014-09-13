@@ -43,5 +43,9 @@ void find_path(BinaryTreeNode *pRoot, int expectedSum);
 void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum);
 BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree);
 void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList);
+int tree_depth(BinaryTreeNode *pRoot);
+bool is_balanced1(BinaryTreeNode *pRoot);
+bool is_balanced2(BinaryTreeNode *pRoot, int *pDepth);
+bool is_balanced2(BinaryTreeNode *pRoot);
 
 #endif

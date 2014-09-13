@@ -281,3 +281,57 @@ void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)
 		convert_node(pCurrent->m_pRight, pLastNodeInList);
 	}
 }
+
+int tree_depth(BinaryTreeNode *pRoot)
+{
+	if (pRoot == NULL) {
+		return 0;
+	}
+
+	int left = tree_depth(pRoot->m_pLeft);
+	int right = tree_depth(pRoot->m_pRight);
+
+	return left > right ? (left + 1) : (right + 1);
+}
+
+bool is_balanced1(BinaryTreeNode *pRoot)
+{
+	if (pRoot == NULL) {
+		return true;
+	}
+
+	int left = tree_depth(pRoot->m_pLeft);
+	int right = tree_depth(pRoot->m_pRight);
+
+	int diff = left - right;
+	if (diff > 1 || diff < -1) {
+		return false;
+	}
+
+	return is_balanced1(pRoot->m_pLeft) && is_balanced1(pRoot->m_pRight);
+}
+
+bool is_balanced2(BinaryTreeNode *pRoot, int *pDepth)
+{
+	if (pRoot == NULL) {
+		*pDepth = 0;
+		return true;
+	}
+
+	int left, right;
+	if (is_balanced2(pRoot->m_pLeft, &left) && is_balanced2(pRoot->m_pRight, &right)) {
+		int diff = left - right;
+		if (diff <= 1 && diff >= -1) {
+			*pDepth = 1 + (left > right ? left : right);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool is_balanced2(BinaryTreeNode *pRoot)
+{
+	int depth = 0;
+	return is_balanced2(pRoot, &depth);
+}
