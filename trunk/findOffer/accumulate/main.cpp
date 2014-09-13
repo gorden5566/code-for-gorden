@@ -27,7 +27,7 @@ int main()
 
 	cout << solution2(5) << endl;
 
-	cout << sum_solution3(5) << endl;
+	cout << solution3(5) << endl;
 
 	return 0;
 }
