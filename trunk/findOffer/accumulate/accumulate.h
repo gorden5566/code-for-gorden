@@ -89,4 +89,7 @@ struct solution4<1>
 	enum value { N = 1 };
 };
 
+//add
+int add(int num1, int num2);
+
 #endif
