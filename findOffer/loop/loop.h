@@ -20,10 +20,14 @@
 #define LOOP_H
 
 #include <iostream>
+#include <cstdlib>
 
 long long fibonacci(unsigned n);
 int number_of_one(int n);
 void print_matrix_clockwise(int **numbers, int columns, int rows);
 void print_matrix_in_circle(int **numbers, int columns, int rows, int start);
  
+int compare(const void *num1, const void *num2);
+bool is_continuous(int *numbers, int length);
+
 #endif

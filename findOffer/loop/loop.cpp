@@ -95,3 +95,41 @@ void print_matrix_in_circle(int **numbers, int columns, int rows, int start)
         }
     }
 }
+
+int compare(const void *num1, const void *num2)
+{
+	return *(int*)num1 - *(int*)num2;
+}
+
+bool is_continuous(int *numbers, int length)
+{
+	if (numbers == NULL || length < 1) {
+		return false;
+	}
+
+	qsort(numbers, length, sizeof(int), compare);
+
+	int numberOfZero = 0;
+	int numberOfGap = 0;
+
+	//number of zero
+	for (int i = 0; i < length && numbers[i] == 0; ++i) {
+		numberOfZero++;
+	}
+
+	//number of gap
+	int small = numberOfZero;
+	int big = small + 1;
+	while (big < length) {
+		if (numbers[small] == numbers[big]) {
+			return false;
+		}
+
+		numberOfGap += numbers[big] - numbers[small] - 1;
+		small = big;
+		++big;
+	}
+
+	return (numberOfGap > numberOfZero) ? false : true;
+}
+
