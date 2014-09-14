@@ -31,6 +31,8 @@ int main()
 
 	cout << "solution4: " << solution4<5>::N << endl;
 
+	cout << "add 5 and 17 : " << add(5, 17) << endl;
+
 	return 0;
 }
 

@@ -58,3 +58,19 @@ unsigned int solution3(unsigned int n)
 	static fun f[2] = {solution3_terminator, solution3};
 	return n + f[!!n](n-1);
 }
+
+//add
+int add(int num1, int num2)
+{
+	int sum, carry;
+
+	do {
+		sum = num1 ^ num2;
+		carry = (num1 & num2) << 1;
+
+		num1 = sum;
+		num2 = carry;
+	} while (num2 != 0);
+
+	return sum;
+}
