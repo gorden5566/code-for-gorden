@@ -21,6 +21,7 @@
 
 #include <iostream>
 
+//solution1
 class Temp
 {
 public:
@@ -46,6 +47,9 @@ private:
 	static unsigned int sum;
 };
 
+unsigned int solution1(unsigned int n);
+
+//solution2
 class A
 {
 public:
@@ -65,11 +69,24 @@ public:
 	}
 };
 
-unsigned int solution1(unsigned int n);
 unsigned int solution2(unsigned int n);
 
+//solution3
 typedef unsigned int (*fun)(unsigned int);
 unsigned int solution3_terminator(unsigned int);
 unsigned int solution3(unsigned int n);
+
+//solution4
+template <unsigned int n>
+struct solution4
+{
+	enum value { N = solution4<n - 1>::N + n };
+};
+
+template <>
+struct solution4<1>
+{
+	enum value { N = 1 };
+};
 
 #endif
