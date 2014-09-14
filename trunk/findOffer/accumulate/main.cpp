@@ -23,11 +23,13 @@ using namespace std;
 
 int main()
 {
-	cout << solution1(5) << endl;
+	cout << "solution1: " << solution1(5) << endl;
 
-	cout << solution2(5) << endl;
+	cout << "solution2: " << solution2(5) << endl;
 
-	cout << solution3(5) << endl;
+	cout << "solution3: " << solution3(5) << endl;
+
+	cout << "solution4: " << solution4<5>::N << endl;
 
 	return 0;
 }

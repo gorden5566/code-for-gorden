@@ -18,10 +18,9 @@
 
 #include "accumulate.h"
 
+//solution1
 unsigned int Temp::n = 0;
 unsigned int Temp::sum = 0;
-
-A *array[2];
 
 unsigned int solution1(unsigned int n)
 {
@@ -34,6 +33,8 @@ unsigned int solution1(unsigned int n)
 	return Temp::getsum();
 }
 
+//solution2
+A *array[2];
 unsigned int solution2(unsigned int n)
 {
 	A a;
@@ -46,6 +47,7 @@ unsigned int solution2(unsigned int n)
 	return value;
 }
 
+//solution3
 unsigned int solution3_terminator(unsigned int)
 {
 	return 0;
