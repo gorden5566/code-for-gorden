@@ -128,13 +128,13 @@ char *reverse_sentence(char *pdata)
 
 	pbegin = pend = pdata;
 	while (*pbegin != '\0') {
-		if (*pbegin == ' ') {
+		if (*pbegin == ' ') { // 2. after reverse a word
 			pbegin++;
 			pend++;
-		} else if (*pend == ' ' || *pend == '\0') {
+		} else if (*pend == ' ' || *pend == '\0') { //1. found a word
 			reverse(pbegin, --pend);
 			pbegin = ++pend;
-		} else {
+		} else { // 3. to find a word's end
 			pend++;
 		}
 	}
