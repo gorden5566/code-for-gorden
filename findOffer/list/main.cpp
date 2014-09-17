@@ -54,7 +54,10 @@ int main()
     //remove_node(&list, 10);
 
     //reverse list
-    //list = reverse_list(list);
+    list = reverse_list(list);
+	print_list(list);
+	list = reverse_list_recur(list);
+	print_list(list);
 
 
     //print list reversingly
