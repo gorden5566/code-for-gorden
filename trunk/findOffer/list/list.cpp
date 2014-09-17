@@ -153,6 +153,25 @@ ListNode* reverse_list(ListNode *pHead)
     return pReversedHead;
 }
 
+ListNode* reverse_list_recur(ListNode *pHead)
+{
+	if (pHead == NULL) {
+		return NULL;
+	}
+
+	if (pHead->m_pNext == NULL) {
+		return pHead;
+	}
+
+	ListNode *pTmp = pHead->m_pNext; //the sub list's tail
+	ListNode *reverse_head = reverse_list_recur(pTmp);
+
+	pTmp->m_pNext = pHead; //connect to the sub list
+	pHead->m_pNext = NULL;
+
+	return reverse_head;
+}
+
 ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2)
 {
     if (pHead1 == NULL) {
