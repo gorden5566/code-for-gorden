@@ -32,6 +32,12 @@ typedef struct BinaryTreeNode {
 
 BinaryTreeNode* construct(int *preorder, int *inorder, int length);
 BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *in_end);
+void pre_order_recur(BinaryTreeNode *root);
+void pre_order_loop(BinaryTreeNode *root);
+void in_order_recur(BinaryTreeNode *root);
+void in_order_loop(BinaryTreeNode *root);
+void post_order_recur(BinaryTreeNode *root);
+void post_order_loop(BinaryTreeNode *root);
 void travel_tree_bfs(BinaryTreeNode *root);
 void travel_tree_dfs(BinaryTreeNode *root);
 void travel_tree_back(BinaryTreeNode *root);

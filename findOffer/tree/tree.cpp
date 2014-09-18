@@ -62,6 +62,115 @@ BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *i
     return root;
 }
 
+void pre_order_recur(BinaryTreeNode *root)
+{
+	if (root != NULL) {
+		std::cout << root->m_nValue << " ";
+		
+		if (root->m_pLeft != NULL) {
+			pre_order_recur(root->m_pLeft);
+		}
+
+		if (root->m_pRight != NULL) {
+			pre_order_recur(root->m_pRight);
+		}
+	}
+}
+
+void pre_order_loop(BinaryTreeNode *root)
+{
+	std::stack<BinaryTreeNode*> nodes;
+
+	BinaryTreeNode *curr = root;
+	while (curr || !nodes.empty()) {
+		while (curr) {
+			nodes.push(curr);
+			std::cout << curr->m_nValue << " ";
+			curr = curr->m_pLeft;
+		}
+		
+		curr = nodes.top();
+		nodes.pop();
+		curr = curr->m_pRight;
+	}
+}
+
+void in_order_recur(BinaryTreeNode *root)
+{
+    if (root == NULL)
+        return;
+	if (root->m_pLeft != NULL) {
+		in_order_recur(root->m_pLeft);
+	}
+
+	std::cout << root->m_nValue << " ";
+
+	if (root->m_pRight != NULL) {
+		in_order_recur(root->m_pRight);
+	}
+}
+
+void in_order_loop(BinaryTreeNode *root)
+{
+	std::stack<BinaryTreeNode*> nodes;
+
+	BinaryTreeNode *curr = root;
+	while (curr || !nodes.empty()) {
+		while (curr) {
+			nodes.push(curr);
+			curr = curr->m_pLeft;
+		}
+		
+		curr = nodes.top();
+		std::cout << curr->m_nValue << " ";
+		nodes.pop();
+		curr = curr->m_pRight;
+	}
+
+}
+
+void post_order_recur(BinaryTreeNode *root)
+{
+    if (root == NULL)
+        return;
+	if (root->m_pLeft != NULL) {
+		post_order_recur(root->m_pLeft);
+	}
+
+	if (root->m_pRight != NULL) {
+		post_order_recur(root->m_pRight);
+	}
+
+	std::cout << root->m_nValue << " ";
+}
+
+void post_order_loop(BinaryTreeNode *root)
+{
+	std::stack<BinaryTreeNode*> nodes;
+	BinaryTreeNode *curr = root;
+	BinaryTreeNode *last = NULL;
+
+	while (curr || !nodes.empty()) {
+		if (curr) { // go to left
+			nodes.push(curr);
+			curr = curr->m_pLeft;
+		} else { // go to right
+			curr = nodes.top();
+			if (curr->m_pRight && curr->m_pRight != last) {
+				curr = curr->m_pRight;
+				nodes.push(curr);
+				curr = curr->m_pLeft;
+			} else {
+				curr = nodes.top();
+				nodes.pop();
+				std::cout << curr->m_nValue << " ";
+				last = curr;
+				curr = NULL;
+			}
+		}
+	}
+}
+
 void travel_tree_bfs(BinaryTreeNode *root)
 {
     if (root == NULL)

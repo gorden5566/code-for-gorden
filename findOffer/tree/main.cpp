@@ -24,6 +24,7 @@ BinaryTreeNode *get_tree1();
 BinaryTreeNode *get_tree2();
 void convert_tree_to_list();
 void depth_and_balance();
+void travel_tree();
 
 int main()
 {
@@ -75,6 +76,8 @@ int main()
 	convert_tree_to_list();
 
 	depth_and_balance();
+
+	travel_tree();
 
     return 0;
 }
@@ -149,4 +152,34 @@ void depth_and_balance()
 	} else {
 		cout << "is balanced2: false "<< endl;
 	}
+}
+
+void travel_tree()
+{
+    int arr_pre[] = {1, 2, 4, 7, 3, 5, 6, 8};
+    int arr_in[] = {4, 7, 2, 1, 5, 3, 8, 6};
+    BinaryTreeNode *pRoot = construct(arr_pre, arr_in, sizeof(arr_in)/sizeof(int));
+	cout << "pre order recur: ";
+	pre_order_recur(pRoot);
+	cout << endl;
+
+	cout << "pre order loop: ";
+	pre_order_loop(pRoot);
+	cout << endl;
+
+	cout << "in order recur: ";
+	in_order_recur(pRoot);
+	cout << endl;
+
+	cout << "in order loop: ";
+	in_order_loop(pRoot);
+	cout << endl;
+
+	cout << "post order recur: ";
+	post_order_recur(pRoot);
+	cout << endl;
+
+	cout << "post order loop: ";
+	post_order_loop(pRoot);
+	cout << endl;
 }
