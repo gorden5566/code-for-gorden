@@ -25,6 +25,7 @@ BinaryTreeNode *get_tree2();
 void convert_tree_to_list();
 void depth_and_balance();
 void travel_tree();
+void find_sum_path();
 
 int main()
 {
@@ -78,6 +79,8 @@ int main()
 	depth_and_balance();
 
 	travel_tree();
+
+	find_sum_path();
 
     return 0;
 }
@@ -182,4 +185,15 @@ void travel_tree()
 	cout << "post order loop: ";
 	post_order_loop(pRoot);
 	cout << endl;
+}
+
+//wang dao
+void find_sum_path()
+{
+    int arr_pre[] = {1, 2, 4, 7, 3, 5, 6, 8};
+    int arr_in[] = {4, 7, 2, 1, 5, 3, 8, 6};
+    BinaryTreeNode *pRoot = construct(arr_pre, arr_in, sizeof(arr_in)/sizeof(int));
+	
+	vector<int> buffer;
+	find_sum(pRoot, 14, buffer, 0);
 }
