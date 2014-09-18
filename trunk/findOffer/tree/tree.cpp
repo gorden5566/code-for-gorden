@@ -444,3 +444,33 @@ bool is_balanced2(BinaryTreeNode *pRoot)
 	int depth = 0;
 	return is_balanced2(pRoot, &depth);
 }
+
+// 王道 p223 路径和
+void print_buffer(std::vector<int> buffer, int level, int i2)
+{
+	for (int i = level; i <= i2; i++) {
+		std::cout << buffer[i] << " ";
+	}
+	std::cout << std::endl;
+}
+
+// 王道 p223 路径和 不一定从根节点开始
+void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level)
+{
+	if (head == NULL) {
+		return;
+	}
+
+	int tmp = sum;
+	buffer.push_back(head->m_nValue);
+	for (int i = level; i >= 0; i--) {
+		tmp -= buffer[i];
+		if (tmp == 0) {
+			print_buffer(buffer, i, level);
+		}
+	}
+
+	find_sum(head->m_pLeft, sum, buffer, level + 1);
+	find_sum(head->m_pRight, sum, buffer, level + 1);
+	buffer.pop_back();
+}
