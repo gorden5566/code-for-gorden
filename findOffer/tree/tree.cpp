@@ -474,3 +474,45 @@ void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level)
 	find_sum(head->m_pRight, sum, buffer, level + 1);
 	buffer.pop_back();
 }
+
+//孩子兄弟表示法 查找等于给定和的路径
+void find_tree_path(BinaryTreeNode *pRoot, int expectedSum)
+{
+    if (pRoot == NULL)
+        return;
+    std::vector<int> path;
+    int currentSum = 0;
+    do_find_tree_path(pRoot, expectedSum, path, currentSum);
+}
+
+//孩子兄弟表示法 查找等于给定和的路径
+void do_find_tree_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum)
+{
+    currentSum += pRoot->m_nValue;
+    path.push_back(pRoot->m_nValue);
+
+    bool isLeaf = pRoot->m_pLeft == NULL;
+    if (currentSum == expectedSum && isLeaf) {
+        std::cout << "A path is found: " << std::endl;
+        std::vector<int>::iterator iter = path.begin();
+        for ( ; iter != path.end(); ++iter) {
+            std::cout << *iter << " ";
+        }
+        std::cout << std::endl;
+    }
+
+    if (pRoot->m_pLeft != NULL) {
+        do_find_tree_path(pRoot->m_pLeft, expectedSum, path, currentSum);
+
+		path.pop_back();
+
+		BinaryTreeNode *pBrother = pRoot->m_pLeft->m_pRight;
+		while (pBrother != NULL) {
+			do_find_tree_path(pBrother, expectedSum, path, currentSum);
+			pBrother = pBrother->m_pRight;
+			path.pop_back();
+		}
+    }
+
+    //path.pop_back();
+}
