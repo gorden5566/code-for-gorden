@@ -19,13 +19,14 @@
 #include "tree.h"
 using namespace std;
 
-void find_path_sum();
+void find_sum_path();
 BinaryTreeNode *get_tree1();
 BinaryTreeNode *get_tree2();
 void convert_tree_to_list();
 void depth_and_balance();
 void travel_tree();
-void find_sum_path();
+void find_sum_path1();
+void find_tree_path();
 
 int main()
 {
@@ -72,7 +73,7 @@ int main()
     cout << is_seq_of_bst(arr_bst1, sizeof(arr_bst1)/sizeof(int)) << endl;
     cout << is_seq_of_bst(arr_bst2, sizeof(arr_bst2)/sizeof(int)) << endl;
 
-    find_path_sum();
+    find_sum_path();
 
 	convert_tree_to_list();
 
@@ -80,12 +81,14 @@ int main()
 
 	travel_tree();
 
-	find_sum_path();
+	find_sum_path1();
+
+	find_tree_path();
 
     return 0;
 }
 
-void find_path_sum()
+void find_sum_path()
 {
     int arr_pre[] = {10, 5, 4, 7, 12};
     int arr_in[] = {4, 5, 7, 10, 12};
@@ -188,7 +191,7 @@ void travel_tree()
 }
 
 //wang dao
-void find_sum_path()
+void find_sum_path1()
 {
     int arr_pre[] = {1, 2, 4, 7, 3, 5, 6, 8};
     int arr_in[] = {4, 7, 2, 1, 5, 3, 8, 6};
@@ -196,4 +199,14 @@ void find_sum_path()
 	
 	vector<int> buffer;
 	find_sum(pRoot, 14, buffer, 0);
+}
+
+void find_tree_path()
+{
+    int arr_pre[] = {10, 5, 3, 7, 6, 2, 12};
+    int arr_in[] = {3, 7, 5, 2, 6, 12, 10};
+    BinaryTreeNode *pRoot = construct(arr_pre, arr_in, sizeof(arr_in)/sizeof(int));
+	travel_tree_bfs(pRoot);
+
+	find_tree_path(pRoot, 18);
 }

@@ -57,4 +57,7 @@ bool is_balanced2(BinaryTreeNode *pRoot);
 void print_buffer(std::vector<int> buffer, int level, int i2);
 void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level);
 
+void find_tree_path(BinaryTreeNode *pRoot, int expectedSum);
+void do_find_tree_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum);
+
 #endif
