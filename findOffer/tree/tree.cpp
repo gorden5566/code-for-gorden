@@ -504,15 +504,13 @@ void do_find_tree_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> 
     if (pRoot->m_pLeft != NULL) {
         do_find_tree_path(pRoot->m_pLeft, expectedSum, path, currentSum);
 
-		path.pop_back();
+		path.pop_back(); //把当前结点从路径中去掉
 
 		BinaryTreeNode *pBrother = pRoot->m_pLeft->m_pRight;
-		while (pBrother != NULL) {
+		while (pBrother != NULL) { //遍历兄弟结点
 			do_find_tree_path(pBrother, expectedSum, path, currentSum);
 			pBrother = pBrother->m_pRight;
 			path.pop_back();
 		}
     }
-
-    //path.pop_back();
 }
