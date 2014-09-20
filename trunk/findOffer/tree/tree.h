@@ -54,6 +54,10 @@ bool is_balanced1(BinaryTreeNode *pRoot);
 bool is_balanced2(BinaryTreeNode *pRoot, int *pDepth);
 bool is_balanced2(BinaryTreeNode *pRoot);
 
+int max_depth(BinaryTreeNode *pRoot);
+int min_depth(BinaryTreeNode *pRoot);
+bool is_balanced3(BinaryTreeNode *pRoot);
+
 void print_buffer(std::vector<int> buffer, int level, int i2);
 void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level);
 

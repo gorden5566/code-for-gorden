@@ -158,6 +158,12 @@ void depth_and_balance()
 	} else {
 		cout << "is balanced2: false "<< endl;
 	}
+
+	if (is_balanced3(pRoot)) {
+		cout << "is balanced3: true "<< endl;
+	} else {
+		cout << "is balanced3: false "<< endl;
+	}
 }
 
 void travel_tree()

@@ -445,6 +445,35 @@ bool is_balanced2(BinaryTreeNode *pRoot)
 	return is_balanced2(pRoot, &depth);
 }
 
+int max_depth(BinaryTreeNode *pRoot)
+{
+	if (pRoot == NULL) {
+		return 0;
+	}
+
+	int leftMaxDepth = max_depth(pRoot->m_pLeft);
+	int rightMaxDepth = max_depth(pRoot->m_pRight);
+
+	return 1 + (leftMaxDepth > rightMaxDepth ? leftMaxDepth : rightMaxDepth);
+}
+
+int min_depth(BinaryTreeNode *pRoot)
+{
+	if (pRoot == NULL) {
+		return 0;
+	}
+
+	int leftMinDepth = min_depth(pRoot->m_pLeft);
+	int rightMinDepth = min_depth(pRoot->m_pRight);
+
+	return 1 + (leftMinDepth < rightMinDepth ? leftMinDepth : rightMinDepth);
+}
+
+bool is_balanced3(BinaryTreeNode *pRoot)
+{
+	return max_depth(pRoot) - min_depth(pRoot);	
+}
+
 // 王道 p223 路径和
 void print_buffer(std::vector<int> buffer, int level, int i2)
 {
