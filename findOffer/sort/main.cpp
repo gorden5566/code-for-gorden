@@ -30,7 +30,8 @@ int main()
     int n = sizeof(arr) / sizeof(arr[0]);
     print_arr(arr, n);
 
-    quick_sort(arr, n, 0, n - 1);
+    //quick_sort(arr, n, 0, n - 1);
+	insert_sort(arr, n);
     print_arr(arr, n);
 
     //int ages[] = {};

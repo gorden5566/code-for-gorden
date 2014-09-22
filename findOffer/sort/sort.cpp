@@ -46,6 +46,21 @@ void print_arr(int arr[], int length)
     std::cout << std::endl;
 }
 
+void insert_sort(int data[], int n)
+{
+	for (int i = 1; i < n; ++i) {
+		if (data[i] < data[i - 1]) {
+			int temp = data[i]; //先保存起来
+
+			int j;
+			for (j = i - 1; data[j] > temp && j >= 0; --j) {
+				data[j + 1] = data[j];
+			}
+			data[j + 1] = temp; //找到位置
+		}
+	}
+}
+
 int partition(int data[], int length, int start, int end)
 {
     if (data == NULL || length <= 0 || start < 0 || end >= length)
