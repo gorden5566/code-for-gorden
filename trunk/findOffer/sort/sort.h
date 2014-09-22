@@ -28,6 +28,7 @@ int partition(int data[], int length, int start, int end);
 void quick_sort(int data[], int length, int start, int end);
 void sort_ages(int ages[], int length);
 void print_arr(int arr[], int length);
+void insert_sort(int data[], int n);
 int inverse_pairs_core(int *data, int *copy, int start, int end);
 int inverse_pairs(int *data, int length);
 int get_first_k(int *data, int length, int k, int start, int end);
