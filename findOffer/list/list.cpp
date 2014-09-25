@@ -21,7 +21,7 @@
 /**
 * @brief 尾插法添加节点
 *
-* @param pHead 指向头节点的指针
+* @param pHead 指向头节点的指针的地址
 * @param value 带插入的值
 */
 void add_to_tail(ListNode** pHead, int value)
@@ -64,7 +64,7 @@ void print_list(ListNode* pHead)
 /**
 * @brief 根据给定值从链表中删除节点
 *
-* @param pHead 指向头节点的指针
+* @param pHead 指向头节点的指针的地址
 * @param value 待删除节点的值
 */
 void remove_node(ListNode** pHead, int value)
@@ -304,7 +304,7 @@ ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2)
 /**
 * @brief 删除节点
 *
-* @param pListHead 指向头节点的指针
+* @param pListHead 指向头节点的指针的地址
 * @param pToBeDeleted 待删除的节点
 */
 void delete_node(ListNode **pListHead, ListNode *pToBeDeleted)
