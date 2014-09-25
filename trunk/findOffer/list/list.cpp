@@ -18,6 +18,12 @@
 
 #include "list.h"
 
+/**
+* @brief 尾插法添加节点
+*
+* @param pHead 指向头节点的指针
+* @param value 带插入的值
+*/
 void add_to_tail(ListNode** pHead, int value)
 {
     ListNode *pNew = new ListNode();
@@ -36,6 +42,11 @@ void add_to_tail(ListNode** pHead, int value)
     }
 }
 
+/**
+* @brief 依次输出链表中节点的值
+*
+* @param pHead
+*/
 void print_list(ListNode* pHead)
 {
     if (pHead == NULL) {
@@ -50,6 +61,12 @@ void print_list(ListNode* pHead)
     }
 }
 
+/**
+* @brief 根据给定值从链表中删除节点
+*
+* @param pHead 指向头节点的指针
+* @param value 待删除节点的值
+*/
 void remove_node(ListNode** pHead, int value)
 {
     if (pHead == NULL || *pHead == NULL)
@@ -76,6 +93,11 @@ void remove_node(ListNode** pHead, int value)
     }
 }
 
+/**
+* @brief 使用迭代方法逆序输出链表
+*
+* @param pHead 头节点
+*/
 void print_list_reverse_iter(ListNode *pHead)
 {
     std::stack<ListNode*> nodes;
@@ -97,6 +119,11 @@ void print_list_reverse_iter(ListNode *pHead)
     std::cout << std::endl;
 }
 
+/**
+* @brief 使用递归的方式逆序输出链表
+*
+* @param pHead 头节点
+*/
 void print_list_reverse_recur(ListNode *pHead)
 {
     if (pHead != NULL) {
@@ -107,6 +134,14 @@ void print_list_reverse_recur(ListNode *pHead)
     }
 }
 
+/**
+* @brief 找到链表中倒数第k个节点
+*
+* @param pHead 头指针
+* @param k 
+*
+* @return 找到的节点
+*/
 ListNode* find_kth_to_tail(ListNode *pHead, unsigned int k)
 {
     if (pHead == NULL || k <= 0)
@@ -132,6 +167,13 @@ ListNode* find_kth_to_tail(ListNode *pHead, unsigned int k)
     return pBehind;
 }
 
+/**
+* @brief 翻转链表
+*
+* @param pHead 头指针
+*
+* @return 翻转后的头指针
+*/
 ListNode* reverse_list(ListNode *pHead)
 {
     ListNode *pReversedHead = NULL;
@@ -153,6 +195,13 @@ ListNode* reverse_list(ListNode *pHead)
     return pReversedHead;
 }
 
+/**
+* @brief 使用递归的方法翻转链表
+*
+* @param pHead 头节点
+*
+* @return 翻转后的头节点 
+*/
 ListNode* reverse_list_recur(ListNode *pHead)
 {
 	if (pHead == NULL) {
@@ -172,6 +221,14 @@ ListNode* reverse_list_recur(ListNode *pHead)
 	return reverse_head;
 }
 
+/**
+* @brief 使用递归的方法合并两个排序链表
+*
+* @param pHead1 链表1的头节点
+* @param pHead2 链表2的头节点
+*
+* @return 合并后的头节点
+*/
 ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2)
 {
     if (pHead1 == NULL) {
@@ -193,6 +250,14 @@ ListNode* merge_recur(ListNode *pHead1, ListNode *pHead2)
     return pMergedHead;
 }
 
+/**
+* @brief 使用循环的方法合并两个排序链表
+*
+* @param pHead1
+* @param pHead2
+*
+* @return 
+*/
 ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2)
 {
     if (pHead1 == NULL) {
@@ -236,6 +301,12 @@ ListNode* merge_loop(ListNode *pHead1, ListNode *pHead2)
     return pMergedHead;
 }
 
+/**
+* @brief 删除节点
+*
+* @param pListHead 指向头节点的指针
+* @param pToBeDeleted 待删除的节点
+*/
 void delete_node(ListNode **pListHead, ListNode *pToBeDeleted)
 {
     if (!pListHead || !pToBeDeleted)
@@ -263,6 +334,13 @@ void delete_node(ListNode **pListHead, ListNode *pToBeDeleted)
     }
 }
 
+/**
+* @brief 获取链表长度
+*
+* @param pHead 头节点
+*
+* @return 
+*/
 unsigned int get_list_length(ListNode *pHead)
 {
 	unsigned int nLength = 0;
@@ -275,6 +353,14 @@ unsigned int get_list_length(ListNode *pHead)
 	return nLength;
 }
 
+/**
+* @brief 找到两个链表的第一个公共节点
+*
+* @param pHead1 链表1的头节点
+* @param pHead2 链表2的头节点
+*
+* @return 
+*/
 ListNode* find_first_common_node(ListNode *pHead1, ListNode *pHead2)
 {
 	unsigned int nLength1 = get_list_length(pHead1);

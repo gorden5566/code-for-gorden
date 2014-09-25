@@ -22,6 +22,9 @@
 #include <iostream>
 #include <stack>
 
+/**
+* @brief 链表节点
+*/
 typedef struct ListNode{
     int m_nValue;
     struct ListNode* m_pNext;
