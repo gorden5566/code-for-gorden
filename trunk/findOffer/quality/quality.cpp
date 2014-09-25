@@ -20,6 +20,14 @@
 
 bool g_InvalidInput = false;
 
+/**
+* @brief 求一个数的整数次方
+*
+* @param base
+* @param exponent
+*
+* @return 
+*/
 double power(double base, int exponent)
 {
     g_InvalidInput = false;
@@ -43,6 +51,14 @@ double power(double base, int exponent)
     return result;
 }
 
+/**
+* @brief 求一个非0浮点数的正整数次方
+*
+* @param base 非0浮点数
+* @param exponent 无符号整数
+*
+* @return 
+*/
 double power_with_unsigned_exponent(double base, unsigned int exponent)
 {
     double result = 1.0;
@@ -53,6 +69,14 @@ double power_with_unsigned_exponent(double base, unsigned int exponent)
     return result;
 }
 
+/**
+* @brief 递归求整数次方
+*
+* @param base
+* @param exponent
+*
+* @return 
+*/
 double power_with_unsigned_exponent_recurse(double base, unsigned int exponent)
 {
     if (exponent == 0)
@@ -62,13 +86,22 @@ double power_with_unsigned_exponent_recurse(double base, unsigned int exponent)
 
     double result = power_with_unsigned_exponent_recurse(base, exponent >> 1);
     result *= result;
-    if (exponent & 0x1) {
+
+    if (exponent & 0x1) { //指数为奇数时要再乘上一个底数
         result *= base;
     }
 
     return result;
 }
 
+/**
+* @brief 判断两个浮点数是否相等
+*
+* @param num1
+* @param num2
+*
+* @return 
+*/
 bool equal(double num1, double num2)
 {
     if ((num1 - num2 > -0.0000001) && (num1 - num2 < 0.0000001))
@@ -77,6 +110,11 @@ bool equal(double num1, double num2)
         return false;
 }
 
+/**
+* @brief 输出1到最大的n位数
+*
+* @param n
+*/
 void print_one_to_max(int n)
 {
     if (n < 0)
@@ -94,6 +132,13 @@ void print_one_to_max(int n)
     delete []number;
 }
 
+/**
+* @brief 将字符串表示的数字加1
+*
+* @param number
+*
+* @return 是否溢出
+*/
 bool increment(char *number)
 {
     bool isOverflow = false;
@@ -123,13 +168,18 @@ bool increment(char *number)
     return isOverflow;
 }
 
+/**
+* @brief 打印用字符串表示的数字
+*
+* @param number
+*/
 void print_number(char *number)
 {
     bool isBeginning0 = true;
     int nLength = strlen(number);
 
     for (int i = 0; i < nLength; ++i) {
-        if (isBeginning0 && number[i] != '0') {
+        if (isBeginning0 && number[i] != '0') { //忽略最前面的0
             isBeginning0 = false;
         }
         if (!isBeginning0) {
