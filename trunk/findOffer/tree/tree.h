@@ -58,8 +58,8 @@ int max_depth(BinaryTreeNode *pRoot);
 int min_depth(BinaryTreeNode *pRoot);
 bool is_balanced3(BinaryTreeNode *pRoot);
 
-void print_buffer(std::vector<int> buffer, int level, int i2);
-void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level);
+void print_path(std::vector<int> path, int start, int end);
+void find_sum(BinaryTreeNode *head, int sum, std::vector<int> path, int num);
 
 void find_tree_path(BinaryTreeNode *pRoot, int expectedSum);
 void do_find_tree_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum);

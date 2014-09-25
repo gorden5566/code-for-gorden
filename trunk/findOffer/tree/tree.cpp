@@ -18,6 +18,15 @@
 
 #include "tree.h"
 
+/**
+* @brief 根据前序遍历和中序遍历构建二叉树
+*
+* @param preorder 前序遍历数组
+* @param inorder 中序遍历数组
+* @param length 数组长度
+*
+* @return 根节点指针
+*/
 BinaryTreeNode* construct(int *preorder, int *inorder, int length)
 {
     if (preorder == NULL || inorder == NULL || length <= 0) {
@@ -26,6 +35,16 @@ BinaryTreeNode* construct(int *preorder, int *inorder, int length)
     return do_construct(preorder, preorder + length - 1, inorder, inorder + length - 1);
 }
 
+/**
+* @brief 根据前序遍历和中序遍历构建二叉树
+*
+* @param pre_start
+* @param pre_end
+* @param in_start
+* @param in_end
+*
+* @return 
+*/
 BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *in_end)
 {
     int rootValue = pre_start[0];
@@ -62,6 +81,11 @@ BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *i
     return root;
 }
 
+/**
+* @brief 使用递归方法前序遍历二叉树
+*
+* @param root
+*/
 void pre_order_recur(BinaryTreeNode *root)
 {
 	if (root != NULL) {
@@ -77,6 +101,11 @@ void pre_order_recur(BinaryTreeNode *root)
 	}
 }
 
+/**
+* @brief 使用非递归方法前序遍历二叉树
+*
+* @param root
+*/
 void pre_order_loop(BinaryTreeNode *root)
 {
 	std::stack<BinaryTreeNode*> nodes;
@@ -84,8 +113,8 @@ void pre_order_loop(BinaryTreeNode *root)
 	BinaryTreeNode *curr = root;
 	while (curr || !nodes.empty()) {
 		while (curr) {
-			nodes.push(curr);
 			std::cout << curr->m_nValue << " ";
+			nodes.push(curr);
 			curr = curr->m_pLeft;
 		}
 		
@@ -95,6 +124,11 @@ void pre_order_loop(BinaryTreeNode *root)
 	}
 }
 
+/**
+* @brief 使用递归方法中序遍历二叉树
+*
+* @param root
+*/
 void in_order_recur(BinaryTreeNode *root)
 {
     if (root == NULL)
@@ -110,6 +144,11 @@ void in_order_recur(BinaryTreeNode *root)
 	}
 }
 
+/**
+* @brief 使用非递归方法中序遍历二叉树
+*
+* @param root
+*/
 void in_order_loop(BinaryTreeNode *root)
 {
 	std::stack<BinaryTreeNode*> nodes;
@@ -129,6 +168,11 @@ void in_order_loop(BinaryTreeNode *root)
 
 }
 
+/**
+* @brief 使用递归方法后续遍历二叉树
+*
+* @param root
+*/
 void post_order_recur(BinaryTreeNode *root)
 {
     if (root == NULL)
@@ -144,6 +188,11 @@ void post_order_recur(BinaryTreeNode *root)
 	std::cout << root->m_nValue << " ";
 }
 
+/**
+* @brief 使用非递归方法后续遍历二叉树
+*
+* @param root
+*/
 void post_order_loop(BinaryTreeNode *root)
 {
 	std::stack<BinaryTreeNode*> nodes;
@@ -171,6 +220,11 @@ void post_order_loop(BinaryTreeNode *root)
 	}
 }
 
+/**
+* @brief 广度优先遍历二叉树
+*
+* @param root
+*/
 void travel_tree_bfs(BinaryTreeNode *root)
 {
     if (root == NULL)
@@ -194,6 +248,11 @@ void travel_tree_bfs(BinaryTreeNode *root)
     std::cout << std::endl;
 }
 
+/**
+* @brief 深度优先遍历二叉树
+*
+* @param root
+*/
 void travel_tree_dfs(BinaryTreeNode *root)
 {
     if (root == NULL)
@@ -208,6 +267,11 @@ void travel_tree_dfs(BinaryTreeNode *root)
     }
 }
 
+/**
+* @brief 使用递归方法后续遍历二叉树
+*
+* @param root
+*/
 void travel_tree_back(BinaryTreeNode *root)
 {
     if (root == NULL)
@@ -221,6 +285,14 @@ void travel_tree_back(BinaryTreeNode *root)
     std::cout << root->m_nValue << " ";
 }
 
+/**
+* @brief 判断pRoot2二叉树是不是pRoot1二叉树的子结构
+*
+* @param pRoot1
+* @param pRoot2
+*
+* @return 
+*/
 bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
 {
     bool result = false;
@@ -242,6 +314,14 @@ bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
     return result;
 }
 
+/**
+* @brief 判断pRoot1二叉树与pRoot2二叉树是不是有相同的结构
+*
+* @param pRoot1
+* @param pRoot2
+*
+* @return 
+*/
 bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
 {
     if (pRoot2 == NULL) { //must be here
@@ -260,6 +340,11 @@ bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2)
         && does_tree1_has_tree2(pRoot1->m_pRight, pRoot2->m_pRight);
 }
 
+/**
+* @brief 生成镜像二叉树
+*
+* @param pRoot
+*/
 void mirror_recurse(BinaryTreeNode *pRoot)
 {
     if (pRoot == NULL) {
@@ -284,6 +369,14 @@ void mirror_recurse(BinaryTreeNode *pRoot)
     }
 }
 
+/**
+* @brief 判断序列是不是后序遍历的结果
+*
+* @param seq[]
+* @param length
+*
+* @return 
+*/
 bool is_seq_of_bst(int seq[], int length)
 {
     if (seq == NULL || length <= 0)
@@ -291,23 +384,27 @@ bool is_seq_of_bst(int seq[], int length)
 
     int root = seq[length - 1];
 
+	//找左子树上的节点
     int i = 0;
     for ( ; i < length -1; ++i) {
         if (seq[i] > root)
             break;
     }
 
+	//判断右子树的节点是否满足要求
     int j = i;
     for ( ; j < length - 1; ++j) {
         if (seq[j] < root)
             return false;
     }
 
+	//递归判断左子树
     bool left = true;
     if (i > 0) {
         left = is_seq_of_bst(seq, i);
     }
 
+	//递归判断右子树
     bool right = true;
     if (i < length - 1) {
         right = is_seq_of_bst(seq + i, length - i - 1);
@@ -316,6 +413,12 @@ bool is_seq_of_bst(int seq[], int length)
     return (left && right);
 }
 
+/**
+* @brief 二叉树和为某一值的路径
+*
+* @param pRoot
+* @param expectedSum
+*/
 void find_path(BinaryTreeNode *pRoot, int expectedSum)
 {
     if (pRoot == NULL)
@@ -325,11 +428,22 @@ void find_path(BinaryTreeNode *pRoot, int expectedSum)
     do_find_path(pRoot, expectedSum, path, currentSum);
 }
 
+/**
+* @brief 二叉树和为某一值的路径
+*
+* @param pRoot
+* @param expectedSum
+* @param path
+* @param currentSum
+*/
 void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum)
 {
+	//加上当前节点的值
     currentSum += pRoot->m_nValue;
+	//把当前节点入栈
     path.push_back(pRoot->m_nValue);
 
+	//到达叶节点，若和满足则输出路径
     bool isLeaf = pRoot->m_pLeft == NULL && pRoot->m_pRight == NULL;
     if (currentSum == expectedSum && isLeaf) {
         std::cout << "A path is found: " << std::endl;
@@ -340,16 +454,26 @@ void do_find_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path
         std::cout << std::endl;
     }
 
+	//递归到左子树查找
     if (pRoot->m_pLeft != NULL) {
         do_find_path(pRoot->m_pLeft, expectedSum, path, currentSum);
     }
+	//递归到右子树查找
     if (pRoot->m_pRight != NULL) {
         do_find_path(pRoot->m_pRight, expectedSum, path, currentSum);
     }
 
+	//手动将当前节点出栈
     path.pop_back();
 }
 
+/**
+* @brief 将二叉树转换为双向链表
+*
+* @param pRootOfTree
+*
+* @return 
+*/
 BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree)
 {
 	BinaryTreeNode *pLastNodeInList = NULL;
@@ -364,6 +488,12 @@ BinaryTreeNode* convert(BinaryTreeNode *pRootOfTree)
 	return pHeadOfList;
 }
 
+/**
+* @brief 将二叉树转换为双向链表
+*
+* @param pNode
+* @param pLastNodeInList
+*/
 void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)
 {
 	if (pNode == NULL) {
@@ -391,6 +521,13 @@ void convert_node(BinaryTreeNode *pNode, BinaryTreeNode **pLastNodeInList)
 	}
 }
 
+/**
+* @brief 求二叉树的深度
+*
+* @param pRoot
+*
+* @return 
+*/
 int tree_depth(BinaryTreeNode *pRoot)
 {
 	if (pRoot == NULL) {
@@ -403,6 +540,13 @@ int tree_depth(BinaryTreeNode *pRoot)
 	return left > right ? (left + 1) : (right + 1);
 }
 
+/**
+* @brief 根据左右子树的深度差判断是否是平衡二叉树
+*
+* @param pRoot
+*
+* @return 
+*/
 bool is_balanced1(BinaryTreeNode *pRoot)
 {
 	if (pRoot == NULL) {
@@ -420,6 +564,14 @@ bool is_balanced1(BinaryTreeNode *pRoot)
 	return is_balanced1(pRoot->m_pLeft) && is_balanced1(pRoot->m_pRight);
 }
 
+/**
+* @brief 判断是否是平衡二叉树，在遍历的时候保存深度
+*
+* @param pRoot
+* @param pDepth
+*
+* @return 
+*/
 bool is_balanced2(BinaryTreeNode *pRoot, int *pDepth)
 {
 	if (pRoot == NULL) {
@@ -439,12 +591,26 @@ bool is_balanced2(BinaryTreeNode *pRoot, int *pDepth)
 	return false;
 }
 
+/**
+* @brief 判断是否是平衡二叉树
+*
+* @param pRoot
+*
+* @return 
+*/
 bool is_balanced2(BinaryTreeNode *pRoot)
 {
 	int depth = 0;
 	return is_balanced2(pRoot, &depth);
 }
 
+/**
+* @brief 求二叉树的最大深度
+*
+* @param pRoot
+*
+* @return 
+*/
 int max_depth(BinaryTreeNode *pRoot)
 {
 	if (pRoot == NULL) {
@@ -457,6 +623,13 @@ int max_depth(BinaryTreeNode *pRoot)
 	return 1 + (leftMaxDepth > rightMaxDepth ? leftMaxDepth : rightMaxDepth);
 }
 
+/**
+* @brief 求二叉树的最小深度
+*
+* @param pRoot
+*
+* @return 
+*/
 int min_depth(BinaryTreeNode *pRoot)
 {
 	if (pRoot == NULL) {
@@ -469,42 +642,67 @@ int min_depth(BinaryTreeNode *pRoot)
 	return 1 + (leftMinDepth < rightMinDepth ? leftMinDepth : rightMinDepth);
 }
 
+/**
+* @brief 根据最大最小深度差判断是否是平衡二叉树
+*
+* @param pRoot
+*
+* @return 
+*/
 bool is_balanced3(BinaryTreeNode *pRoot)
 {
 	return max_depth(pRoot) - min_depth(pRoot);	
 }
 
-// 王道 p223 路径和
-void print_buffer(std::vector<int> buffer, int level, int i2)
+/**
+* @brief 打印路径
+*
+* @param path
+* @param start
+* @param end
+*/
+void print_path(std::vector<int> path, int start, int end)
 {
-	for (int i = level; i <= i2; i++) {
-		std::cout << buffer[i] << " ";
+	for (int i = start; i <= end; i++) {
+		std::cout << path[i] << " ";
 	}
 	std::cout << std::endl;
 }
 
-// 王道 p223 路径和 不一定从根节点开始
-void find_sum(BinaryTreeNode *head, int sum, std::vector<int> buffer, int level)
+/**
+* @brief 找和等于给定值的路径，不一定从根节点开始
+*
+* @param head
+* @param sum 给定的值
+* @param path 保存路径
+* @param num 路径中节点的下标
+*/
+void find_sum(BinaryTreeNode *head, int sum, std::vector<int> path, int num)
 {
 	if (head == NULL) {
 		return;
 	}
 
 	int tmp = sum;
-	buffer.push_back(head->m_nValue);
-	for (int i = level; i >= 0; i--) {
-		tmp -= buffer[i];
+	path.push_back(head->m_nValue);
+	for (int i = num; i >= 0; i--) {
+		tmp -= path[i];
 		if (tmp == 0) {
-			print_buffer(buffer, i, level);
+			print_path(path, i, num);
 		}
 	}
 
-	find_sum(head->m_pLeft, sum, buffer, level + 1);
-	find_sum(head->m_pRight, sum, buffer, level + 1);
-	buffer.pop_back();
+	find_sum(head->m_pLeft, sum, path, num + 1);
+	find_sum(head->m_pRight, sum, path, num + 1);
+	path.pop_back();
 }
 
-//孩子兄弟表示法 查找等于给定和的路径
+/**
+* @brief 在任意树中查找等于给定值的路径
+*
+* @param pRoot 根节点指针(使用孩子兄弟表示法)
+* @param expectedSum
+*/
 void find_tree_path(BinaryTreeNode *pRoot, int expectedSum)
 {
     if (pRoot == NULL)
@@ -514,7 +712,14 @@ void find_tree_path(BinaryTreeNode *pRoot, int expectedSum)
     do_find_tree_path(pRoot, expectedSum, path, currentSum);
 }
 
-//孩子兄弟表示法 查找等于给定和的路径
+/**
+* @brief 在任意树中查找等于给定值的路径
+*
+* @param pRoot
+* @param expectedSum
+* @param path
+* @param currentSum
+*/
 void do_find_tree_path(BinaryTreeNode *pRoot, int expectedSum, std::vector<int> &path, int currentSum)
 {
     currentSum += pRoot->m_nValue;
