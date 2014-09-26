@@ -18,9 +18,15 @@
 
 #include "heap.h"
 
-//新加入结点i 其父结点下标为 (i - 1) / 2
+/**
+* @brief 添加节点，从下往上调整
+*
+* @param arr[]
+* @param i 从节点i的父节点开始调整
+*/
 void min_heap_fixup(int arr[], int i)
 {
+	//新加入结点i 其父结点下标为 (i - 1) / 2
 	int parent = (i - 1) / 2;
 	int temp = arr[i];
 
@@ -36,14 +42,26 @@ void min_heap_fixup(int arr[], int i)
 	arr[i] = temp;
 }
 
-//在最小堆中加入新的数据 nNum
-void min_heap_add_number(int arr[], int n, int nNum)
+/**
+* @brief 往最小堆中添加值
+*
+* @param arr[]
+* @param i 新节点的下标 
+* @param nNum 新添加的值
+*/
+void min_heap_add_number(int arr[], int i, int nNum)
 {
-	arr[n] = nNum;
-	min_heap_fixup(arr, n);
+	arr[i] = nNum;
+	min_heap_fixup(arr, i);
 }
 
-// 从结点i开始往下调整 n为结点总数
+/**
+* @brief 从上往下调整
+*
+* @param arr[]
+* @param i 从节点i开始调整
+* @param n 节点总数
+*/
 void min_heap_fixdown(int arr[], int i, int n)
 {
 	int temp = arr[i]; //保存要调整结点的值
@@ -64,33 +82,52 @@ void min_heap_fixdown(int arr[], int i, int n)
 	arr[i] = temp; //找到了最终位置
 }
 
-//建立最小堆
+/**
+* @brief 建立最小堆
+*
+* @param arr[]
+* @param n 元素个数
+*/
 void make_min_heap(int arr[], int n)
 {
-	//从最后一个叶结点的父结点处开始向下调整
+	//从最后一个叶结点的父结点处开始往前扫描，依次向下调整
 	for (int i = n / 2 - 1; i >= 0; --i) {
 		min_heap_fixdown(arr, i, n);
 	}
 }
 
-//在最小堆中删除数
+/**
+* @brief 从最小堆中删除第一个元素并放到最后一个位置
+*
+* @param arr[]
+* @param n 元素个数
+*/
 void min_heap_delete_number(int arr[], int n)
 {
+	//交换第一元素和最后一个元素
 	int temp = arr[0];
 	arr[0] = arr[n - 1];
 	arr[n - 1] = temp;
 
+	//从第一个元素开始向下调整
 	min_heap_fixdown(arr, 0, n - 1);
 }
 
-//最小堆排序 得到递减数组
+/**
+* @brief 最小堆排序
+*
+* @param arr[]
+* @param n
+*/
 void min_heap_sort(int arr[], int n)
 {
 	for (int i = n - 1; i >= 1; --i) {
+		//把当前最小的元素放到最后
 		int temp = arr[i];
 		arr[i] = arr[0];
 		arr[0] = temp;
 
+		//重新调整堆
 		min_heap_fixdown(arr, 0, i);
 	}
 }
