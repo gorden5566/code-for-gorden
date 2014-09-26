@@ -20,7 +20,7 @@
 #define HEAP_H
 
 void min_heap_fixup(int arr[], int i);
-void min_heap_add_number(int arr[], int n, int nNum);
+void min_heap_add_number(int arr[], int i, int nNum);
 void min_heap_fixdown(int arr[], int i, int n);
 void make_min_heap(int arr[], int n);
 void min_heap_delete_number(int arr[], int n);
