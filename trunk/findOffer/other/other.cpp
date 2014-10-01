@@ -20,6 +20,13 @@
 
 bool g_InvalidInput = false;
 
+/**
+* @brief 找最小的k个数
+*
+* @param data 要处理的数据
+* @param leastNumbers 用于保存结果
+* @param k
+*/
 void get_least_numbers(const vector<int> &data, intSet &leastNumbers, unsigned int k)
 {
 	leastNumbers.clear();
@@ -30,12 +37,13 @@ void get_least_numbers(const vector<int> &data, intSet &leastNumbers, unsigned i
 
 	vector<int>::const_iterator iter = data.begin();
 	for ( ; iter != data.end(); ++iter) {
-		if ((leastNumbers.size()) < k) {
+		if ((leastNumbers.size()) < k) { //结果集数据少于k个
 			leastNumbers.insert(*iter);
 		} else {
+			//最大值保存在此
 			setIterator iterGreatest = leastNumbers.begin();
 
-			if (*iter < *(leastNumbers.begin())) {
+			if (*iter < *(leastNumbers.begin())) { //替换结果集里的最大值
 				leastNumbers.erase(iterGreatest);
 				leastNumbers.insert(*iter);
 			}
