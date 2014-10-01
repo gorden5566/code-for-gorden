@@ -3,7 +3,7 @@
  *
  *       Filename:  rotatedArray2.cpp
  *
- *    Description:  
+ *    Description:  search in rotated sorted array II
  *
  *        Version:  1.0
  *        Created:  2014年10月01日 09时39分21秒

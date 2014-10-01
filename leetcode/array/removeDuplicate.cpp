@@ -3,7 +3,7 @@
  *
  *       Filename:  removeDuplicate.cpp
  *
- *    Description:  
+ *    Description:  remove duplicates from sorted array
  *
  *        Version:  1.0
  *        Created:  2014年09月29日 21时03分26秒
