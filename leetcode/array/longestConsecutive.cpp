@@ -22,7 +22,7 @@
 
 using namespace std;
 
-class Solution
+class Solution1
 {
 public:
 	int longestConsecutive(const vector<int> &num)
@@ -63,6 +63,45 @@ public:
 	}
 };
 
+class Solution2
+{
+public:
+	int longestConsecutive(vector<int> &num)
+	{
+		unordered_map<int, int> map;
+		int size = num.size();
+		int l = 1;
+
+		for (int i = 0; i < size; ++i) {
+			if (map.find(num[i]) != map.end())
+				continue;
+
+			map[num[i]] = 1;
+			if (map.find(num[i] - 1) != map.end()) {
+				l = max(l, mergeCluster(map, num[i] - 1, num[i]));
+			}
+
+			if (map.find(num[i] + 1) != map.end()) {
+				l = max(l , mergeCluster(map, num[i], num[i] + 1));
+			}
+		}
+
+		return size == 0 ? 0 : l;
+	}
+private:
+	int mergeCluster(unordered_map<int, int> &map, int left, int right)
+	{
+		int upper = right + map[right] - 1;
+		int lower = left - map[left] + 1;
+		int length = upper - lower + 1;
+
+		map[upper] = length;
+		map[lower] = length;
+
+		return length;
+	}
+};
+
 int main()
 {
 	int a[] = {100, 4, 200, 1, 3, 2};
@@ -70,9 +109,11 @@ int main()
 
 	vector<int> num(a, a + n);
 
-	Solution s;
+	Solution1 s1;
+	cout << s1.longestConsecutive(num) << endl;
 
-	cout << s.longestConsecutive(num) << endl;
+	Solution2 s2;
+	cout << s2.longestConsecutive(num) << endl;
 
 	return 0;
 }
