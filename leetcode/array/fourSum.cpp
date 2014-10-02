@@ -82,9 +82,11 @@ public:
 
 		sort(num.begin(), num.end()); //先进行排序
 
+		//初始化hashmap
 		unordered_map<int, vector< pair<int, int> > > cache;
 		for (vector<int>::size_type a = 0; a < num.size(); ++a) {
 			for (vector<int>::size_type b = a + 1; b < num.size(); ++b) {
+				//值为对应下标
 				cache[num[a] + num[b]].push_back(pair<int, int>(a, b));
 			}
 		}
@@ -98,6 +100,7 @@ public:
 
 				const vector< pair<int, int> > &vec = cache[key];
 				for (auto k = 0; k < vec.size(); ++k) {
+					//c,d应该大于a,b
 					if (c <= vec[k].second)
 						continue;
 
@@ -124,6 +127,7 @@ int main()
 	//Solution1
 	Solution1 s1;
 	result = s1.fourSum(ivec, 0);
+	cout << "Solution1 :" << endl;
 	for (int i = 0; i < result.size(); ++i) {
 		for (vector<int>::iterator iter = result[i].begin(); iter != result[i].end(); ++iter) {
 			cout << *iter << " ";
@@ -134,6 +138,7 @@ int main()
 	//Solution2
 	Solution2 s2;
 	result = s2.fourSum(ivec, 0);
+	cout << "Solution2 :" << endl;
 	for (int i = 0; i < result.size(); ++i) {
 		for (vector<int>::iterator iter = result[i].begin(); iter != result[i].end(); ++iter) {
 			cout << *iter << " ";
