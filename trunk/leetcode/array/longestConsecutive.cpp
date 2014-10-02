@@ -68,9 +68,9 @@ class Solution2
 public:
 	int longestConsecutive(vector<int> &num)
 	{
-		unordered_map<int, int> map;
+		unordered_map<int, int> map; //key为数组中的元素,value为当前求得的最大长度
 		int size = num.size();
-		int l = 1;
+		int length = 1;
 
 		for (int i = 0; i < size; ++i) {
 			if (map.find(num[i]) != map.end())
@@ -78,24 +78,24 @@ public:
 
 			map[num[i]] = 1;
 			if (map.find(num[i] - 1) != map.end()) {
-				l = max(l, mergeCluster(map, num[i] - 1, num[i]));
+				length = max(length, mergeCluster(map, num[i] - 1, num[i]));
 			}
 
 			if (map.find(num[i] + 1) != map.end()) {
-				l = max(l , mergeCluster(map, num[i], num[i] + 1));
+				length = max(length, mergeCluster(map, num[i], num[i] + 1));
 			}
 		}
 
-		return size == 0 ? 0 : l;
+		return size == 0 ? 0 : length;
 	}
 private:
 	int mergeCluster(unordered_map<int, int> &map, int left, int right)
 	{
-		int upper = right + map[right] - 1;
-		int lower = left - map[left] + 1;
-		int length = upper - lower + 1;
+		int upper = right + map[right] - 1; //求右边界
+		int lower = left - map[left] + 1; //求左边界
+		int length = upper - lower + 1; //计算长度
 
-		map[upper] = length;
+		map[upper] = length; //修改边界位置对应长度
 		map[lower] = length;
 
 		return length;
