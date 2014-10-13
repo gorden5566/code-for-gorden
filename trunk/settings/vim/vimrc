@@ -117,4 +117,5 @@ fi
 export LC_ALL="zh_CN.UTF-8"
 alias rm='rm -i'
 alias mv='mv -i'
+alias cp='cp -i'
 export EDITOR='vim'
