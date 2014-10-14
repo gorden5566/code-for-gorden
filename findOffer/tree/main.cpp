@@ -46,11 +46,6 @@ int main()
     travel_tree_dfs(root);
     cout << endl;
 
-    //back order
-    cout << "back order travel" << endl;
-    travel_tree_back(root);
-    cout << endl;
-
     //has subtree
     cout << "two tree" << endl;
     BinaryTreeNode *pRoot1 = get_tree1();

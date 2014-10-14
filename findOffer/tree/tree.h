@@ -40,7 +40,6 @@ void post_order_recur(BinaryTreeNode *root);
 void post_order_loop(BinaryTreeNode *root);
 void travel_tree_bfs(BinaryTreeNode *root);
 void travel_tree_dfs(BinaryTreeNode *root);
-void travel_tree_back(BinaryTreeNode *root);
 bool has_subtree(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2);
 bool does_tree1_has_tree2(BinaryTreeNode *pRoot1, BinaryTreeNode *pRoot2);
 void mirror_recurse(BinaryTreeNode *pRoot);
