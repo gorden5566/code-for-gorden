@@ -53,7 +53,7 @@ BinaryTreeNode* do_construct(int *pre_start, int *pre_end, int *in_start, int *i
     root->m_pLeft = root->m_pRight = NULL;
 
     if (pre_start == pre_end) {
-        if (in_start == in_end && *pre_start == *pre_end) {
+        if (in_start == in_end) {
             return root;
         } else { 
             return NULL;
@@ -265,24 +265,6 @@ void travel_tree_dfs(BinaryTreeNode *root)
     if (root->m_pRight != NULL) {
         travel_tree_dfs(root->m_pRight);
     }
-}
-
-/**
-* @brief 使用递归方法后续遍历二叉树
-*
-* @param root
-*/
-void travel_tree_back(BinaryTreeNode *root)
-{
-    if (root == NULL)
-        return;
-    if (root->m_pLeft != NULL) {
-        travel_tree_back(root->m_pLeft);
-    }
-    if (root->m_pRight != NULL) {
-        travel_tree_back(root->m_pRight);
-    }
-    std::cout << root->m_nValue << " ";
 }
 
 /**
