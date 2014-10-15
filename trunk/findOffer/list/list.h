@@ -27,7 +27,7 @@
 */
 typedef struct ListNode{
     int m_nValue;
-    struct ListNode* m_pNext;
+    ListNode* m_pNext;
 } ListNode;
 
 
