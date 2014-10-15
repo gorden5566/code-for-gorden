@@ -32,6 +32,7 @@ int random_in_range(int start, int end)
         start = end;
         end = temp;
     }
+	srand((unsigned)time(NULL));
     int r = rand() % (end - start + 1);
     return start + r;
 }
